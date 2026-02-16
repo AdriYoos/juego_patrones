@@ -41,6 +41,7 @@ class AppConstants {
 
   // Configuración de la cuadrícula
   static const int gridColumns = 3;
+  static const int gridColumnsLandscape = 6;  
   static const double gridSpacing = 12.0;
   static const double gridPadding = 12.0;
   static const double tileBorderRadius = 18.0;

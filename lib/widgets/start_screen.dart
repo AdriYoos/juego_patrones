@@ -21,66 +21,72 @@ class StartScreen extends StatelessWidget {
         ),
       ),
       child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // Icono principal del juego
-            const Icon(
-              Icons.pets,
-              size: 90,
-              color: Colors.white,
-            ),
-
-            const SizedBox(height: 20),
-
-            // Título del juego
-            const Text(
-              AppConstants.gameTitle,
-              style: TextStyle(
-                fontSize: 34,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-                letterSpacing: 1.2,
-              ),
-            ),
-
-            const SizedBox(height: 10),
-
-            // Subtítulo descriptivo
-            const Text(
-              AppConstants.gameSubtitle,
-              style: TextStyle(
-                fontSize: 18,
-                color: Colors.white70,
-              ),
-            ),
-
-            const SizedBox(height: 50),
-
-            // Botón para iniciar el juego
-            ElevatedButton(
-              onPressed: onStartGame,// se llama a la función que inicia el juego cuando se presiona el botón
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppConstants.startButtonColor,
-                foregroundColor: Colors.black,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 60,
-                  vertical: 18,
+        child: OrientationBuilder(
+          builder: (context, orientation) {
+            bool isLandscape = orientation == Orientation.landscape;
+            
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // Icono principal del juego
+                Icon(
+                  Icons.pets,
+                  size: isLandscape ? 70 : 90,
+                  color: Colors.white,
                 ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(40),
+
+                SizedBox(height: isLandscape ? 15 : 20),
+
+                // Título del juego
+                Text(
+                  AppConstants.gameTitle,
+                  style: TextStyle(
+                    fontSize: isLandscape ? 28 : 34,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    letterSpacing: 1.2,
+                  ),
                 ),
-                elevation: 8,
-              ),
-              child: const Text(
-                AppConstants.startButtonText,
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
+
+                SizedBox(height: isLandscape ? 5 : 10),
+
+                // Subtítulo descriptivo
+                Text(
+                  AppConstants.gameSubtitle,
+                  style: TextStyle(
+                    fontSize: isLandscape ? 16 : 18,
+                    color: Colors.white70,
+                  ),
                 ),
-              ),
-            ),
-          ],
+
+                SizedBox(height: isLandscape ? 30 : 50),
+
+                // Botón para iniciar el juego
+                ElevatedButton(
+                  onPressed: onStartGame,// se llama a la función que inicia el juego cuando se presiona el botón
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppConstants.startButtonColor,
+                    foregroundColor: Colors.black,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: isLandscape ? 50 : 60,
+                      vertical: isLandscape ? 14 : 18,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(40),
+                    ),
+                    elevation: 8,
+                  ),
+                  child: Text(
+                    AppConstants.startButtonText,
+                    style: TextStyle(
+                      fontSize: isLandscape ? 20 : 22,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
         ),
       ),
     );

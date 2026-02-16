@@ -152,30 +152,75 @@ class _PatronGameScreenState extends State<PatronGameScreen> {
 
   /// Construye la vista del juego en progreso
   Widget _buildGameView() {
-    return Column(
-      children: [
-        const SizedBox(height: 10),
-        
-        // Indicador de nivel
-        Text(
-          '${AppConstants.levelText}${_gameState.level}',
-          style: const TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        
-        const SizedBox(height: 10),
-        
-        // Cuadrícula de animales
-        Expanded(
-          child: GameGrid(
-            activeIndex: _gameState.activeIndex,
-            pressedIndex: _gameState.pressedIndex,
-            onTilePressed: _onTilePressed,
-          ),
-        ),
-      ],
+  return OrientationBuilder(
+    builder: (context, orientation) {
+      bool isLandscape = orientation == Orientation.landscape;
+      
+      if (isLandscape) {
+        return Row(
+          children: [
+            Container(
+              width: 120, 
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(
+                    Icons.pets,
+                    size: 40,  
+                    color: Colors.white70,
+                  ),
+                  const SizedBox(height: 15),  
+                  Text(
+                    '${AppConstants.levelText}${_gameState.level}',
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: 24,  
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: Center(  // ← AGREGAR: Center para centrar el grid
+                child: GameGrid(
+                  activeIndex: _gameState.activeIndex,
+                  pressedIndex: _gameState.pressedIndex,
+                  onTilePressed: _onTilePressed,
+                ),
+              ),
+            ),
+          ],
+        );
+        } else {
+          return Column(
+            children: [
+              const SizedBox(height: 10),
+              
+              // Indicador de nivel
+              Text(
+                '${AppConstants.levelText}${_gameState.level}',
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              
+              const SizedBox(height: 10),
+              
+              // Cuadrícula de animales
+              Expanded(
+                child: GameGrid(
+                  activeIndex: _gameState.activeIndex,
+                  pressedIndex: _gameState.pressedIndex,
+                  onTilePressed: _onTilePressed,
+                ),
+              ),
+            ],
+          );
+        }
+      },
     );
   }
 }

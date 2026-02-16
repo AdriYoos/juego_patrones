@@ -15,6 +15,39 @@ Un juego de memoria visual desarrollado en Flutter donde debes recordar y repeti
 4. Si aciertas, avanzas al siguiente nivel con una secuencia más larga
 5. Si fallas, el juego termina y muestra tu nivel alcanzado
 
+## 📸 Capturas de la Aplicación
+
+### 🟢 Pantalla de Inicio
+Pantalla inicial donde el jugador puede comenzar la partida.
+
+![Pantalla de inicio](assets/screenshots/inicio.jpeg)
+
+---
+
+### 🔴 Visualización de la Secuencia
+El juego ilumina los animales en rojo para que el jugador memorice el patrón.
+
+![Secuencia iluminada](assets/screenshots/secuencia.jpeg)
+
+---
+
+### 🟢 Turno del Jugador
+El jugador repite la secuencia tocando los animales en el orden correcto.
+
+![Jugador interactuando](assets/screenshots/jugador.jpeg)
+
+---
+
+### ❌ Fin del Juego
+Cuando el jugador falla, se muestra un mensaje con el nivel alcanzado.
+
+![Fin del juego](assets/screenshots/game_over.jpeg)
+
+## 🛠️ Tecnologías Utilizadas
+
+- Flutter
+- Dart
+- Material Design
 
 
 ## 📁 Estructura del Proyecto
@@ -35,9 +68,6 @@ patron_game/
 │       └── constants.dart           # Constantes de la aplicación
 
 ```
-
-
-
 
 ## 🏗️ Arquitectura del Código
 
@@ -100,3 +130,14 @@ Edita las constantes en `lib/utils/constants.dart`:
 ```dart
 static const int gridColumns = 3;  // Número de columnas (actualmente 3x4)
 ```
+## 🚀 Posibles Mejoras
+
+- ➕ **Botón de reinicio**:  
+  Permitir al jugador reiniciar la partida sin tener que perder aproposito para volver a la pantalla inicial.
+
+- 📊 **Indicador de progreso de la secuencia**:  
+  Mostrar en pantalla:
+  - La longitud actual de la secuencia (por ejemplo: *Secuencia: 5 pasos*).
+  - En qué paso de la secuencia va el jugador (por ejemplo: *Paso 3 de 5*).
+
+Estas mejoras ayudarían a mejorar la experiencia del usuario y la claridad del juego durante partidas largas.
